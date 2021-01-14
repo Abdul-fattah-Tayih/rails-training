@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job title en:</strong>
+  <%= @professional_datum.job_title_en %>
+</p>
+
+<p>
+  <strong>Job title ar:</strong>
+  <%= @professional_datum.job_title_ar %>
+</p>
+
+<p>
+  <strong>Period from:</strong>
+  <%= @professional_datum.period_from %>
+</p>
+
+<p>
+  <strong>Period to:</strong>
+  <%= @professional_datum.period_to %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @professional_datum.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_professional_datum_path(@professional_datum) %> |
+<%= link_to 'Back', professional_data_path %>
