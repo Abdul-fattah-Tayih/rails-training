@@ -2,28 +2,28 @@
 
 <p>
   <strong>Job title en:</strong>
-  <%= @professional_datum.job_title_en %>
+  <%= @professional_datum.title['en'] %>
 </p>
 
 <p>
   <strong>Job title ar:</strong>
-  <%= @professional_datum.job_title_ar %>
+  <%= @professional_datum.title['ar'] %>
 </p>
 
 <p>
-  <strong>Period from:</strong>
-  <%= @professional_datum.period_from %>
+  <strong>Started At:</strong>
+  <%= @professional_datum.started_at %>
 </p>
 
 <p>
-  <strong>Period to:</strong>
-  <%= @professional_datum.period_to %>
+  <strong>Ended At:</strong>
+  <%= @professional_datum.ended_at %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @professional_datum.user_id %>
+  <strong>Employee:</strong>
+  <%= @professional_datum.employee_id %>
 </p>
 
-<%= link_to 'Edit', edit_professional_datum_path(@professional_datum) %> |
-<%= link_to 'Back', professional_data_path %>
+<%= link_to 'Edit', edit_employee_professional_datum_path(@professional_datum) %> |
+<%= link_to 'Back', employee_professional_datum_path %>

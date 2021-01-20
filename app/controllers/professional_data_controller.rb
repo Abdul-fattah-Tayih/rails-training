@@ -1,20 +1,22 @@
 class ProfessionalDataController < ApplicationController
+  before_action :set_employee
   before_action :set_professional_datum, only: [:show, :edit, :update, :destroy]
 
   # GET /professional_data
   # GET /professional_data.json
   def index
-    @professional_data = ProfessionalDatum.all
+    @professional_datum = @employee.professional_data
   end
 
   # GET /professional_data/1
   # GET /professional_data/1.json
   def show
+    @professional_datum = ProfessionalData.find(params[:professional_data])
   end
 
   # GET /professional_data/new
   def new
-    @professional_datum = ProfessionalDatum.new
+    @professional_datum = ProfessionalData.new
   end
 
   # GET /professional_data/1/edit
@@ -24,7 +26,7 @@ class ProfessionalDataController < ApplicationController
   # POST /professional_data
   # POST /professional_data.json
   def create
-    @professional_datum = ProfessionalDatum.new(professional_datum_params)
+    @professional_datum = ProfessionalData.new(professional_datum_params)
 
     respond_to do |format|
       if @professional_datum.save
@@ -62,13 +64,18 @@ class ProfessionalDataController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_professional_datum
-      @professional_datum = ProfessionalDatum.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def professional_datum_params
-      params.require(:professional_datum).permit(:job_title_en, :job_title_ar, :period_from, :period_to, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_professional_datum
+    @professional_datum = ProfessionalData.find(params[:id])
+  end
+
+  def set_employee
+    @employee = Employee.find(params[:employee_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def professional_datum_params
+    params.fetch(:professional_data).permit(:started_at, :ended_at, :employee_id, title: {})
+  end
 end

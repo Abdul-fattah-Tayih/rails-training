@@ -15,5 +15,10 @@ module RailsTraining
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    I18n.available_locales = [:ar, :en]
+    I18n.default_locale = :ar
+    config.active_job.queue_adapter = :delayed_job
+    config.active_record.observers = :employee_observer
+    config.eager_load_paths += %W(#{config.root}/lib)
   end
 end

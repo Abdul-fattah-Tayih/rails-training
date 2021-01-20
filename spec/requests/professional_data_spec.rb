@@ -13,7 +13,7 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/professional_data", type: :request do
-  # ProfessionalDatum. As you add validations to ProfessionalDatum, be sure to
+  # ProfessionalData. As you add validations to ProfessionalData, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -25,7 +25,7 @@ RSpec.describe "/professional_data", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      ProfessionalDatum.create! valid_attributes
+      ProfessionalData.create! valid_attributes
       get professional_data_url
       expect(response).to be_successful
     end
@@ -33,7 +33,7 @@ RSpec.describe "/professional_data", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      professional_datum = ProfessionalDatum.create! valid_attributes
+      professional_datum = ProfessionalData.create! valid_attributes
       get professional_datum_url(professional_datum)
       expect(response).to be_successful
     end
@@ -48,7 +48,7 @@ RSpec.describe "/professional_data", type: :request do
 
   describe "GET /edit" do
     it "render a successful response" do
-      professional_datum = ProfessionalDatum.create! valid_attributes
+      professional_datum = ProfessionalData.create! valid_attributes
       get edit_professional_datum_url(professional_datum)
       expect(response).to be_successful
     end
@@ -56,23 +56,23 @@ RSpec.describe "/professional_data", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new ProfessionalDatum" do
+      it "creates a new ProfessionalData" do
         expect {
           post professional_data_url, params: { professional_datum: valid_attributes }
-        }.to change(ProfessionalDatum, :count).by(1)
+        }.to change(ProfessionalData, :count).by(1)
       end
 
       it "redirects to the created professional_datum" do
         post professional_data_url, params: { professional_datum: valid_attributes }
-        expect(response).to redirect_to(professional_datum_url(ProfessionalDatum.last))
+        expect(response).to redirect_to(professional_datum_url(ProfessionalData.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new ProfessionalDatum" do
+      it "does not create a new ProfessionalData" do
         expect {
           post professional_data_url, params: { professional_datum: invalid_attributes }
-        }.to change(ProfessionalDatum, :count).by(0)
+        }.to change(ProfessionalData, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
@@ -89,14 +89,14 @@ RSpec.describe "/professional_data", type: :request do
       }
 
       it "updates the requested professional_datum" do
-        professional_datum = ProfessionalDatum.create! valid_attributes
+        professional_datum = ProfessionalData.create! valid_attributes
         patch professional_datum_url(professional_datum), params: { professional_datum: new_attributes }
         professional_datum.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the professional_datum" do
-        professional_datum = ProfessionalDatum.create! valid_attributes
+        professional_datum = ProfessionalData.create! valid_attributes
         patch professional_datum_url(professional_datum), params: { professional_datum: new_attributes }
         professional_datum.reload
         expect(response).to redirect_to(professional_datum_url(professional_datum))
@@ -105,7 +105,7 @@ RSpec.describe "/professional_data", type: :request do
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        professional_datum = ProfessionalDatum.create! valid_attributes
+        professional_datum = ProfessionalData.create! valid_attributes
         patch professional_datum_url(professional_datum), params: { professional_datum: invalid_attributes }
         expect(response).to be_successful
       end
@@ -114,14 +114,14 @@ RSpec.describe "/professional_data", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested professional_datum" do
-      professional_datum = ProfessionalDatum.create! valid_attributes
+      professional_datum = ProfessionalData.create! valid_attributes
       expect {
         delete professional_datum_url(professional_datum)
-      }.to change(ProfessionalDatum, :count).by(-1)
+      }.to change(ProfessionalData, :count).by(-1)
     end
 
     it "redirects to the professional_data list" do
-      professional_datum = ProfessionalDatum.create! valid_attributes
+      professional_datum = ProfessionalData.create! valid_attributes
       delete professional_datum_url(professional_datum)
       expect(response).to redirect_to(professional_data_url)
     end

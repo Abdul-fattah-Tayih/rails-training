@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :employee do
     association :user
-    name { { 'ar': 'اسم موظف', 'en': Faker::Name.name } }
-    title { { 'ar': '', 'en': Faker::Job.title } }
+    name_ar { 'اسم موظف' }
+    name_en { Faker::Name.name }
+    title_ar { 'مهندس' }
+    title_en { Faker::Job.title }
   end
 end

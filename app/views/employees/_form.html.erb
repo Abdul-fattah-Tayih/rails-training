@@ -12,28 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title_en %>
-    <%= form.text_field :title_en %>
+    <%= form.fields_for :title, OpenStruct.new(employee.title) do |title_fields| %>
+      <%= title_fields.label :title_ar %>
+      <%= title_fields.text_field 'ar' %>
+      <%= title_fields.label :title_en %>
+      <%= title_fields.text_field 'en' %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :title_ar %>
-    <%= form.text_field :title_ar %>
+    <%= form.fields_for :name, OpenStruct.new(employee.name) do |name_fields| %>
+      <%= name_fields.label :name_ar %>
+      <%= name_fields.text_field 'ar' %>
+      <%= name_fields.label :name_en %>
+      <%= name_fields.text_field 'en' %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :name_en %>
-    <%= form.text_field :name_en %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name_ar %>
-    <%= form.text_field :name_ar %>
-  </div>
-
-  <div class="field">
-    <%= form.label :belongs_to %>
-    <%= form.text_field :belongs_to %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
   </div>
 
   <div class="actions">

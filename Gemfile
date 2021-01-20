@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "brakeman"
 gem "bullet"
 gem 'devise'
+gem 'rails-i18n'
+gem 'rails-observers'
+gem 'delayed_job_active_record'

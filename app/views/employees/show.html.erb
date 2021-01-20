@@ -2,27 +2,27 @@
 
 <p>
   <strong>Title en:</strong>
-  <%= @employee.title_en %>
+  <%= @employee.title['en'] %>
 </p>
 
 <p>
   <strong>Title ar:</strong>
-  <%= @employee.title_ar %>
+  <%= @employee.title['ar'] %>
 </p>
 
 <p>
   <strong>Name en:</strong>
-  <%= @employee.name_en %>
+  <%= @employee.name['en'] %>
 </p>
 
 <p>
   <strong>Name ar:</strong>
-  <%= @employee.name_ar %>
+  <%= @employee.name['ar'] %>
 </p>
 
 <p>
-  <strong>Belongs to:</strong>
-  <%= @employee.belongs_to %>
+  <strong>User:</strong>
+  <%= @employee.user.id %>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |

@@ -1,4 +1,4 @@
-<%= form_with(model: professional_datum, local: true) do |form| %>
+<%= form_with(model: professional_datum, local: true, url: employee_professional_data_path(@employee)) do |form| %>
   <% if professional_datum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(professional_datum.errors.count, "error") %> prohibited this professional_datum from being saved:</h2>
@@ -12,28 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :job_title_en %>
-    <%= form.text_field :job_title_en %>
+    <%= form.fields_for :title, OpenStruct.new(@professional_datum.title) do |title_fields| %>
+      <%= title_fields.label :title_ar %>
+      <%= title_fields.text_field :ar %>
+      <%= title_fields.label :title_en %>
+      <%= title_fields.text_field :en %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :job_title_ar %>
-    <%= form.text_field :job_title_ar %>
+    <%= form.label :started_at %>
+    <%= form.datetime_select :started_at %>
   </div>
 
   <div class="field">
-    <%= form.label :period_from %>
-    <%= form.datetime_select :period_from %>
+    <%= form.label :ended_at %>
+    <%= form.datetime_select :ended_at %>
   </div>
 
   <div class="field">
-    <%= form.label :period_to %>
-    <%= form.datetime_select :period_to %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :employee_id %>
+    <%= form.text_field :employee_id, value: @employee.id %>
   </div>
 
   <div class="actions">

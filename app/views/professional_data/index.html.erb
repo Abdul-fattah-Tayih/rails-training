@@ -5,26 +5,24 @@
 <table>
   <thead>
     <tr>
-      <th>Job title en</th>
-      <th>Job title ar</th>
-      <th>Period from</th>
-      <th>Period to</th>
-      <th>User</th>
+      <th>Job title</th>
+      <th>Started at</th>
+      <th>Ended at</th>
+      <th>Employee</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @professional_data.each do |professional_datum| %>
+    <% @professional_datum.each do |professional_datum| %>
       <tr>
-        <td><%= professional_datum.job_title_en %></td>
-        <td><%= professional_datum.job_title_ar %></td>
-        <td><%= professional_datum.period_from %></td>
-        <td><%= professional_datum.period_to %></td>
-        <td><%= professional_datum.user_id %></td>
-        <td><%= link_to 'Show', professional_datum %></td>
-        <td><%= link_to 'Edit', edit_professional_datum_path(professional_datum) %></td>
-        <td><%= link_to 'Destroy', professional_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= professional_datum.localized_title %></td>
+        <td><%= professional_datum.started_at %></td>
+        <td><%= professional_datum.ended_at %></td>
+        <td><%= link_to professional_datum.employee_id, employee_path(professional_datum.employee_id) %></td>
+        <td><%= link_to 'Show', employee_professional_datum_path(@employee, professional_datum) %></td>
+        <td><%= link_to 'Edit', edit_employee_professional_datum_path(@employee, professional_datum) %></td>
+        <td><%= link_to 'Destroy', [@employee, professional_datum], method: :delete, datum: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Professional Datum', new_professional_datum_path %>
+<%= link_to 'New Professional Datum', new_employee_professional_datum_path %>
