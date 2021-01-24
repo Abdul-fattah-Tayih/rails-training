@@ -82,19 +82,4 @@ RSpec.describe Employee, type: :model do
       end
     end
   end
-
-  # unit test tests business logic
-  describe 'behavioral' do
-    it 'sends an email after creating an employee' do
-      # allow_any_instance_of().to receive().and_return()
-      # when running specs, block sending email
-      # expect(Mailer).to receive(:delay) | :deliver
-      # test if the job was inserted in the queue
-      allow(EmployeeMailer).to receive(:employee_created)
-      allow(EmployeeMailer).to receive(:delay)
-      employee_mailer_stub = instance_double EmployeeMailer
-      FactoryBot.create(:employee)
-      expect(employee_mailer_stub).to receive(:employee_created)
-    end
-  end
 end
